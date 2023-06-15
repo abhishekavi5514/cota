@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form - Page 1</title>
+  <script>
+    function showPaymentFields() {
+      var paymentMode = document.getElementById('paymentMode');
+      var cardFields = document.getElementById('cardFields');
+      var netbankingFields = document.getElementById('netbankingFields');
+      var otherFields = document.getElementById('otherFields');
+      cardFields.style.display = 'none';
+      netbankingFields.style.display = 'none';
+      otherFields.style.display = 'none';
+      if (paymentMode.value === 'debitCreditCard') {
+        cardFields.style.display = 'block';
+      } else if (paymentMode.value === 'netbanking') {
+        netbankingFields.style.display = 'block';
+      } else if (paymentMode.value === 'other') {
+        otherFields.style.display = 'block';
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Page 1</h1>
+
+  <form action="submit.php" method="post">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required><br><br>
+
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="tel" id="mobileNumber" name="mobileNumber" required><br><br>
+
+    <label for="pnrNumber">PNR No:</label>
+    <input type="text" id="pnrNumber" name="pnrNumber" required><br><br>
+
+    <button type="button" onclick="showPaymentFields()">Next</button>
+  </form>
+
+  <h1>Page 2</h1>
+
+  <form action="submit.php" method="post">
+    <label for="paymentMode">Mode of Payment:</label>
+    <select id="paymentMode" name="paymentMode" required>
+      <option value="debitCreditCard">Debit/Credit Card</option>
+      <option value="netbanking">Netbanking</option>
+      <option value="other">Other</option>
+    </select><br><br>
+
+    <div id="cardFields" style="display: none;">
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" name="cardNumber"><br><br>
+
+      <label for="expiryDate">Expiry Date:</label>
+      <input type="text" id="expiryDate" name="expiryDate"><br><br>
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv"><br><br>
+    </div>
+
+    <div id="netbankingFields" style="display: none;">
+      <label for="userID">User ID:</label>
+      <input type="text" id="userID" name="userID"><br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+    </div>
+
+    <div id="otherFields" style="display: none;">
+      <label for="otherInfo">Other Information:</label>
+      <input type="text" id="otherInfo" name="otherInfo"><br><br>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+
+</html>
